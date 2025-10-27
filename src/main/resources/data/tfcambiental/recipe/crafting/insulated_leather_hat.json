@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SSS",
+    "SXS",
+    "SSS"
+  ],
+  "key": {
+    "X": {
+      "item": "minecraft:leather_helmet"
+    },
+    "S": {
+      "tag": "c:strings"
+    }
+  },
+  "result": {
+    "count": 1,
+    "id": "tfcambiental:insulated_leather_hat"
+  }
+}

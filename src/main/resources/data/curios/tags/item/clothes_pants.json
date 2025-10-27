@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "tfcambiental:wool_pants",
+    "tfcambiental:burlap_pants",
+    "tfcambiental:insulated_leather_pants",
+    "tfcambiental:leather_apron"
+  ]
+}

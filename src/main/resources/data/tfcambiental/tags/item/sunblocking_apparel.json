@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "tfcambiental:straw_hat",
+    "tfcambiental:wool_hat",
+    "tfcambiental:burlap_cowl",
+    "tfcambiental:insulated_leather_hat"
+  ]
+}

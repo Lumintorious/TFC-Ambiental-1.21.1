@@ -1,0 +1,54 @@
+{
+  "death.attack.frostbite": "%1$s froze to death.",
+  "death.attack.heatstroke": "%1$s died of heatstroke.",
+
+  "effect.tfcambiental.cool.name": "Cooling Down",
+  "effect.tfcambiental.warm.name": "Warming Up",
+
+  "itemGroup.tfcambiental": "TFC Ambiental",
+
+  "item.tfcambiental.house_tester": "House Tester",
+  "item.tfcambiental.snowshoes": "Snow Shoes",
+  "item.tfcambiental.straw_hat": "Straw Hat",
+  "item.tfcambiental.leather_apron": "Leather Apron",
+
+  "item.tfcambiental.wool_hat": "Wool Hat",
+  "item.tfcambiental.wool_sweater": "Wool Sweater",
+  "item.tfcambiental.wool_pants": "Wool Pants",
+  "item.tfcambiental.wool_boots": "Wool Boots",
+
+  "item.tfcambiental.silk_cowl": "Silk Cowl",
+  "item.tfcambiental.silk_shirt": "Silk Shirt",
+  "item.tfcambiental.silk_pants": "Silk Pants",
+  "item.tfcambiental.silk_shoes": "Silk Shoes",
+
+  "item.tfcambiental.burlap_cowl": "Burlap Cowl",
+  "item.tfcambiental.burlap_shirt": "Burlap Shirt",
+  "item.tfcambiental.burlap_pants": "Burlap Pants",
+  "item.tfcambiental.burlap_shoes": "Burlap Shoes",
+
+  "item.tfcambiental.insulated_leather_hat": "Insulated Leather Hat",
+  "item.tfcambiental.insulated_leather_tunic": "Insulated Leather Tunic",
+  "item.tfcambiental.insulated_leather_pants": "Insulated Leather Pants",
+  "item.tfcambiental.insulated_leather_boots": "Insulated Leather Boots",
+
+  "tfcambiental.house_tester.description": "Right click to check if your current location is considered inside or outside",
+  "tfcambiental.message.is_inside": "You are inside",
+  "tfcambiental.message.is_inside_alt": "Your outsides are inside",
+  "tfcambiental.message.is_outside": "You are outside",
+  "tfcambiental.message.is_outside_alt": "Your insides are outside",
+
+  "tfcambiental.tooltip.warmth": "%s Warmth",
+  "tfcambiental.tooltip.insulation": "%s Insulation",
+  "tfcambiental.tooltip.sun_protection": "-20% Warmth from direct sun exposure",
+  "tfcambiental.tooltip.snowshoes": "No more sinking into powdered snow",
+
+  "message.tfcambiental.cold_hungry": "The cold is draining your energy.",
+  "message.tfcambiental.heat_thirsty": "The cold is dehydrating you.",
+
+  "curios.identifier.clothes_hat": "Clothes (Head)",
+  "curios.identifier.clothes_torso": "Clothes (Torso)",
+  "curios.identifier.clothes_pants": "Clothes (Legs)",
+  "curios.identifier.clothes_socks": "Clothes (Feet)",
+  "curios.identifier.feet": "Equipment (Feet)"
+}
