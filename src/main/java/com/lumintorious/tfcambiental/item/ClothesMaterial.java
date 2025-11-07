@@ -117,8 +117,8 @@ public class ClothesMaterial {
             BURLAP_MATERIAL.value(), (player, stack) -> Optional.of(new TemperatureModifier("clothes", -1f, -0.15f)),
             WOOL_MATERIAL.value(), (player, stack) -> Optional.of(new TemperatureModifier("clothes", 2f, -0.15f)),
             INSULATED_LEATHER.value(), (player, stack) -> Optional.of(new TemperatureModifier("clothes", 0.5f, -0.2f)),
-            STRAW_MATERIAL.value(), (player, stack) -> Optional.of(new TemperatureModifier("clothes", 0.5f, -0.15f)),
-            LEATHER_APRON_MATERIAL.value(), (player, stack) -> Optional.of(new TemperatureModifier("clothes", 0.5f, -0.15f))
+            STRAW_MATERIAL.value(), (player, stack) -> Optional.of(new TemperatureModifier("clothes", -0.5f, -0.15f)),
+            LEATHER_APRON_MATERIAL.value(), (player, stack) -> Optional.of(new TemperatureModifier("clothes", 0f, -0.1f))
         );
 
         return mappings.get(material);

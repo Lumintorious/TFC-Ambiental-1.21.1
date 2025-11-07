@@ -16,8 +16,8 @@ public interface BlockTemperatureProvider
 
     static void evaluateAll(Player player, TemperatureModifier.Cache cache) {
         BlockPos p = player.getOnPos();
-        BlockPos pos1 = new BlockPos(p.getX() - 9, p.getY() - 3, p.getZ() - 9);
-        BlockPos pos2 = new BlockPos(p.getX() + 9, p.getY() + 5, p.getZ() + 9);
+        BlockPos pos1 = new BlockPos(p.getX() - 12, p.getY() - 5, p.getZ() - 12);
+        BlockPos pos2 = new BlockPos(p.getX() + 12, p.getY() + 7, p.getZ() + 12);
         Iterable<BlockPos> allPositions = BlockPos.betweenClosed(pos1, pos2);
         for (BlockPos pos : allPositions) {
             if (!player.level().isLoaded(pos)) continue;
@@ -34,7 +34,7 @@ public interface BlockTemperatureProvider
             distanceMultiplier = 1f - distanceMultiplier;
             boolean isInside = EnvironmentalTemperatureProvider.getSkylight(player) < 14 && EnvironmentalTemperatureProvider.getBlockLight(player) > 3;
             if (isInside) {
-                distanceMultiplier *= 1.3f;
+                distanceMultiplier = Math.min(1, distanceMultiplier * 2.5f);
             }
             final float finalDistanceMultiplier = distanceMultiplier;
 

@@ -3,6 +3,7 @@ package com.lumintorious.tfcambiental;
 import com.lumintorious.tfcambiental.data.PlayerTemperaturePacket;
 import com.lumintorious.tfcambiental.data.TemperatureModifier;
 import com.lumintorious.tfcambiental.item.ClothesItem;
+import com.lumintorious.tfcambiental.item.TFCAmbientalItems;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
@@ -146,6 +147,9 @@ public class TFCAmbientalEvents {
                 if (insulation != 0) {
                     event.getToolTip().add(Component.translatable("tfcambiental.tooltip.insulation", (formatAttribute(insulation)) + "%").withStyle(ChatFormatting.BLUE));
                 }
+            }
+            if (event.getItemStack().is(TFCAmbientalItems.LEATHER_APRON.get())) {
+                event.getToolTip().add(Component.translatable("tfcambiental.tooltip.apron").withStyle(ChatFormatting.BLUE));
             }
         } else {
             if (event.getItemStack().getItem() instanceof ArmorItem armorItem && armorItem.getType().equals(ArmorItem.Type.HELMET)) {

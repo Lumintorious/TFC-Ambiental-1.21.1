@@ -41,6 +41,7 @@
   "tfcambiental.tooltip.warmth": "%s Warmth",
   "tfcambiental.tooltip.insulation": "%s Insulation",
   "tfcambiental.tooltip.sun_protection": "-20% Warmth from direct sun exposure",
+  "tfcambiental.tooltip.apron": "-80% Warmth from working around hot devices",
   "tfcambiental.tooltip.snowshoes": "No more sinking into powdered snow",
 
   "message.tfcambiental.cold_hungry": "The cold is draining your energy.",

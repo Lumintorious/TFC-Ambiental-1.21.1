@@ -51,17 +51,68 @@ public class TFCAmbientalConfig
 
     private static final ModConfigSpec.Builder CLIENT_BUILDER = new ModConfigSpec.Builder();
 
-    public static final ModConfigSpec.DoubleValue healthDrainIconVerticalOffset = CLIENT_BUILDER
-            .comment("Offset of the GUI element indicating health drain from temperature")
-            .defineInRange("healthDrainIconVerticalOffset", 11F, -999F, +999F);
+    public static final ModConfigSpec.DoubleValue temperatureX = CLIENT_BUILDER
+            .comment("X offset of the main temperature status indicator")
+            .defineInRange("temperature.x", 0F, -999F, +999F);
 
-    public static final ModConfigSpec.DoubleValue hungerDrainIconVerticalOffset = CLIENT_BUILDER
-            .comment("Offset of the GUI element indicating hunger drain from temperature")
-            .defineInRange("hungerDrainIconVerticalOffset", 6F, -999F, +999F);
+    public static final ModConfigSpec.DoubleValue temperatureY = CLIENT_BUILDER
+            .comment("Y offset of the main temperature status indicator")
+            .defineInRange("temperature.y", 0F, -999F, +999F);
 
-    public static final ModConfigSpec.DoubleValue thirstDrainIconVerticalOffset = CLIENT_BUILDER
-            .comment("Offset of the GUI element indicating thirst drain from temperature")
-            .defineInRange("thirstDrainIconVerticalOffset", 13F, -999F, +999F);
+
+    public static final ModConfigSpec.DoubleValue shelterX = CLIENT_BUILDER
+            .comment("X offset of the shelter indicator")
+            .defineInRange("shelter.x", 0F, -999F, +999F);
+
+    public static final ModConfigSpec.DoubleValue shelterY = CLIENT_BUILDER
+            .comment("Y offset of the shelter indicator")
+            .defineInRange("shelter.y", 0F, -999F, +999F);
+
+
+    public static final ModConfigSpec.DoubleValue healthDrainX = CLIENT_BUILDER
+            .comment("X offset of the health drain indicator")
+            .defineInRange("healthDrain.x", 0F, -999F, +999F);
+
+    public static final ModConfigSpec.DoubleValue healthDrainY = CLIENT_BUILDER
+            .comment("Y offset of the health drain indicator")
+            .defineInRange("healthDrain.y", 0F, -999F, +999F);
+
+
+    public static final ModConfigSpec.DoubleValue hungerDrainX = CLIENT_BUILDER
+            .comment("X offset of the hunger drain indicator")
+            .defineInRange("hungerDrain.x", 0F, -999F, +999F);
+
+    public static final ModConfigSpec.DoubleValue hungerDrainY = CLIENT_BUILDER
+            .comment("Y offset of the hunger drain indicator")
+            .defineInRange("hungerDrain.y", 0F, -999F, +999F);
+
+
+    public static final ModConfigSpec.DoubleValue thirstDrainX = CLIENT_BUILDER
+            .comment("X offset of the thirst drain indicator")
+            .defineInRange("thirstDrain.x", 0F, -999F, +999F);
+
+    public static final ModConfigSpec.DoubleValue thirstDrainY = CLIENT_BUILDER
+            .comment("Y offset of the thirst drain indicator")
+            .defineInRange("thirstDrain.y", 0F, -999F, +999F);
+
+
+    public static final ModConfigSpec.DoubleValue wetnessX = CLIENT_BUILDER
+            .comment("X offset of the wetness indicator")
+            .defineInRange("wetnessIndicator.x", 0F, -999F, +999F);
+
+    public static final ModConfigSpec.DoubleValue wetnessY = CLIENT_BUILDER
+            .comment("Y offset of the wetness indicator")
+            .defineInRange("wetnessIndicator.y", 0F, -999F, +999F);
+
+
+    public static final ModConfigSpec.DoubleValue textStatusX = CLIENT_BUILDER
+            .comment("X offset of the text status (when shift is pressed)")
+            .defineInRange("textStatus.x", 0F, -999F, +999F);
+
+    public static final ModConfigSpec.DoubleValue textStatusY = CLIENT_BUILDER
+            .comment("Y offset of the text status (when shift is pressed)")
+            .defineInRange("textStatus.y", 0F, -999F, +999F);
+
 
     public static final ModConfigSpec CLIENT_SPEC = CLIENT_BUILDER.build();
 }

@@ -6,6 +6,7 @@ import com.lumintorious.tfcambiental.TFCAmbientalTags;
 import com.lumintorious.tfcambiental.data.TemperatureModifier;
 import net.dries007.tfc.common.component.food.Nutrient;
 import net.dries007.tfc.common.component.food.NutritionData;
+import net.dries007.tfc.common.fluids.TFCFluids;
 import net.dries007.tfc.common.player.IPlayerInfo;
 import net.dries007.tfc.common.player.PlayerInfo;
 import net.dries007.tfc.util.climate.Climate;
@@ -40,7 +41,7 @@ public interface EnvironmentalTemperatureProvider
         Bat guineaPig = new Bat(EntityType.BAT, player.level());
         guineaPig.setPos(player.getPosition(0).add(0, 1, 0));
         guineaPig.setBaby(true);
-        FlyNodeEvaluator evaluator = new FlyNodeEvaluator();
+        FlyNodeEvaluator evaluator = new BuildingInsulationPathNodeEvaluator();
         PathFinder finder = new PathFinder(evaluator, 500);
         Path path = finder.findPath(
                 region,
@@ -105,12 +106,13 @@ public interface EnvironmentalTemperatureProvider
         if (player.isInWater()) {
             BlockPos pos = player.getOnPos().above();
             BlockState state = player.level().getBlockState(pos);
-            if (state.getFluidState().is(TFCAmbientalTags.SPRING_WATER)) {
-                return TemperatureModifier.defined("in_hot_water", 5f, 6f, 10f);
+            if (state.getFluidState().is(TFCFluids.SPRING_WATER.getFlowing()) || state.getFluidState().is(TFCFluids.SPRING_WATER.getSource())) {
+                return TemperatureModifier.defined("in_hot_water", 6f, 2f, 10f);
             } else if (state.getBlock() == Blocks.LAVA) {
                 return TemperatureModifier.defined("in_lava", 10f, 5f, -10f);
+            } else {
+                return TemperatureModifier.defined("in_water", -6f, 2f, 10f);
             }
-            return TemperatureModifier.defined("in_water", -5f, 6f, 10f);
         }
         return TemperatureModifier.none();
     }
@@ -215,6 +217,16 @@ public interface EnvironmentalTemperatureProvider
             potency = envTemperature < temperatureCapability.getTemperature() ? 5.5f : potency;
         }
         return TemperatureModifier.defined("wetness", mod * temperatureCapability.getWetness(), potency, !player.isInWater() ? -0.03f : 0);
+    }
+
+    static Optional<TemperatureModifier> handleTFCSurviveEffects(Player player) {
+        if (player.getActiveEffects().stream().anyMatch(instance -> instance.getEffect().value().getDescriptionId().endsWith("warming"))) {
+            return TemperatureModifier.defined("warming_effect", 4f, 0f);
+        }
+        if (player.getActiveEffects().stream().anyMatch(instance -> instance.getEffect().value().getDescriptionId().endsWith("cooling"))) {
+            return TemperatureModifier.defined("cooling_effect", -4f, 0f);
+        }
+        return TemperatureModifier.none();
     }
 
     static void evaluateAll(Player player, TemperatureModifier.Cache cache) {

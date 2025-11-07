@@ -188,6 +188,14 @@ public class PlayerTemperature{
                             }
                         }
                     });
+                    player.getArmorSlots().forEach(stack -> {
+                        if (stack.getItem() instanceof ClothesItem) {
+                            stack.setDamageValue(stack.getDamageValue() + 1);
+                            if (stack.getDamageValue() > stack.getMaxDamage()) {
+                                stack.setCount(0);
+                            }
+                        }
+                    });
                 }
             }
 
@@ -208,9 +216,9 @@ public class PlayerTemperature{
                 if (damageTick % 90 == 0) {
                     if (IPlayerInfo.get(player) instanceof PlayerInfo stats) {
                         if (this.getTemperature() > TFCAmbientalConfig.hotThreshold.get().floatValue()) {
-                            stats.addThirst(-7);
+                            stats.addThirst(-5);
                         } else if (this.getTemperature() < TFCAmbientalConfig.coolThreshold.get().floatValue()) {
-                            stats.setFoodLevel(stats.getFoodLevel() - 1);
+                            stats.addExhaustion(4f);
                         }
                     }
                 }

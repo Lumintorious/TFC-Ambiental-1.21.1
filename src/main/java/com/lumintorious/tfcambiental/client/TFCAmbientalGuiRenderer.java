@@ -4,7 +4,6 @@ import com.lumintorious.tfcambiental.TFCAmbiental;
 import com.lumintorious.tfcambiental.TFCAmbientalConfig;
 import com.lumintorious.tfcambiental.data.PlayerTemperature;
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.vertex.*;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
@@ -69,9 +68,9 @@ public class TFCAmbientalGuiRenderer implements LayeredDraw.Layer
             float change = tempSystem.getTemperatureChange();
 
             if (tempSystem.isInside()) {
-                drawTexturedModalRect(stack, mid - 9, armorRowHeight - 8, 18, 18, SHELTER_FULL);
+                drawTexturedModalRect(stack, mid - 9 + TFCAmbientalConfig.shelterX.get().floatValue(), armorRowHeight - 8 + TFCAmbientalConfig.shelterY.get().floatValue(), 18, 18, SHELTER_FULL);
             } else if (tempSystem.isUnderRoof()) {
-                drawTexturedModalRect(stack, mid - 9, armorRowHeight - 8, 18, 18, SHELTER_ROOF);
+                drawTexturedModalRect(stack, mid - 9 + TFCAmbientalConfig.shelterX.get().floatValue(), armorRowHeight - 8 + TFCAmbientalConfig.shelterY.get().floatValue(), 18, 18, SHELTER_ROOF);
             }
             RenderSystem.setShaderColor(redCol, greenCol, blueCol, 0.9F);
             RenderSystem.enableBlend();
@@ -79,18 +78,18 @@ public class TFCAmbientalGuiRenderer implements LayeredDraw.Layer
 
             // Hunger and Thirst loss indicators
             if (tempSystem.getTemperature() > TFCAmbientalConfig.hotThreshold.get()) {
-                drawTexturedModalRect(stack, mid + 85, armorRowHeight + TFCAmbientalConfig.thirstDrainIconVerticalOffset.get().floatValue() -1, 14, 14, MINUSER);
+                drawTexturedModalRect(stack, mid + 85 + TFCAmbientalConfig.thirstDrainX.get().floatValue(), armorRowHeight + 12 + TFCAmbientalConfig.thirstDrainY.get().floatValue(), 14, 14, MINUSER);
             }
 
             if (tempSystem.getTemperature() < TFCAmbientalConfig.coolThreshold.get()) {
-                drawTexturedModalRect(stack, mid + 85, armorRowHeight + TFCAmbientalConfig.hungerDrainIconVerticalOffset.get().floatValue() - 1, 14, 14, MINUSER);
+                drawTexturedModalRect(stack, mid + 85 + TFCAmbientalConfig.hungerDrainX.get().floatValue(), armorRowHeight + 5 + TFCAmbientalConfig.hungerDrainY.get().floatValue(), 14, 14, MINUSER);
             }
 
             if (tempSystem.getTemperature() < TFCAmbientalConfig.freezeThreshold.get() || tempSystem.getTemperature() > TFCAmbientalConfig.burnThreshold.get()) {
                 RenderSystem.setShaderColor(redCol, greenCol, blueCol, 0.9F);
                 RenderSystem.enableBlend();
                 RenderSystem.setShaderColor(redCol, greenCol, blueCol, 0.9F);
-                drawTexturedModalRect(stack, mid - 98, armorRowHeight + TFCAmbientalConfig.healthDrainIconVerticalOffset.get().floatValue() - 1, 14, 14, MINUSER);
+                drawTexturedModalRect(stack, mid - 98 + TFCAmbientalConfig.healthDrainX.get().floatValue(), armorRowHeight + 10 + TFCAmbientalConfig.healthDrainY.get().floatValue(), 14, 14, MINUSER);
             }
 
             RenderSystem.setShaderColor(redCol, greenCol, blueCol, 0.9F);
@@ -99,19 +98,19 @@ public class TFCAmbientalGuiRenderer implements LayeredDraw.Layer
 
             if (change > 0) {
                 if (change > PlayerTemperature.HIGH_CHANGE) {
-                    drawTexturedModalRect(stack, mid - 8, armorRowHeight - 5, 16, 16, PLUSER);
+                    drawTexturedModalRect(stack, mid - 8 + TFCAmbientalConfig.temperatureX.get().floatValue(), armorRowHeight - 5  + TFCAmbientalConfig.temperatureY.get().floatValue(), 16, 16, PLUSER);
                 } else {
-                    drawTexturedModalRect(stack, mid - 8, armorRowHeight - 5, 16, 16, PLUS);
+                    drawTexturedModalRect(stack, mid - 8 + TFCAmbientalConfig.temperatureX.get().floatValue(), armorRowHeight - 5 + TFCAmbientalConfig.temperatureY.get().floatValue(), 16, 16, PLUS);
                 }
             } else {
                 if (change < -PlayerTemperature.HIGH_CHANGE) {
-                    drawTexturedModalRect(stack, mid - 8, armorRowHeight - 5, 16, 16, MINUSER);
+                    drawTexturedModalRect(stack, mid - 8 + TFCAmbientalConfig.temperatureX.get().floatValue(), armorRowHeight - 5 + TFCAmbientalConfig.temperatureY.get().floatValue(), 16, 16, MINUSER);
                 } else {
-                    drawTexturedModalRect(stack, mid - 8, armorRowHeight - 5, 16, 16, MINUS);
+                    drawTexturedModalRect(stack, mid - 8 + TFCAmbientalConfig.temperatureX.get().floatValue(), armorRowHeight - 5 + TFCAmbientalConfig.temperatureY.get().floatValue(), 16, 16, MINUS);
                 }
             }
             if (tempSystem.getWetness() > 1) {
-                drawTexturedModalRect(stack, mid - 12, armorRowHeight + 5, 16, 16, WET);
+                drawTexturedModalRect(stack, (float) (mid - 12 + TFCAmbientalConfig.wetnessX.get()), (float) (armorRowHeight + 5 + TFCAmbientalConfig.wetnessY.get()), 16, 16, WET);
             }
 
             if (player.isCrouching()) {
@@ -123,7 +122,7 @@ public class TFCAmbientalGuiRenderer implements LayeredDraw.Layer
 
                 Font f = Minecraft.getInstance().font;
                 String tempStr = String.format("%.1f\u00BA -> %.1f\u00BA", tempSystem.getTemperature(), tempSystem.getTargetTemperature());
-                stack.drawString(f, tempStr, mid + 94, armorRowHeight + 40, TFCAmbientalGuiRenderer.getIntFromColor(redCol, greenCol, blueCol), false);
+                stack.drawString(f, tempStr, mid + 94 + TFCAmbientalConfig.textStatusX.get().floatValue(), armorRowHeight + 40 + TFCAmbientalConfig.textStatusY.get().floatValue(), TFCAmbientalGuiRenderer.getIntFromColor(redCol, greenCol, blueCol), false);
 
 //                String wetStr = String.format("%.1f", tempSystem.getPotency());
 //                stack.drawString(f, wetStr, mid - 16 + f.width(wetStr) / 2F, armorRowHeight + 1 - shiftHeight, TFCAmbientalGuiRenderer.getIntFromColor(redCol, greenCol, blueCol), false);

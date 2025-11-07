@@ -54,6 +54,7 @@ public class AmbientalRegistry<Type> implements Iterable<Type>
         ENVIRONMENT.register(EnvironmentalTemperatureProvider::handleSprinting);
         ENVIRONMENT.register(EnvironmentalTemperatureProvider::handleUnderground);
         ENVIRONMENT.register(EnvironmentalTemperatureProvider::handleWetness);
+        ENVIRONMENT.register(EnvironmentalTemperatureProvider::handleTFCSurviveEffects);
 
         ENTITIES.register(EntityTemperatureProvider::handleHotEntities);
         ENTITIES.register(EntityTemperatureProvider::handleColdEntities);
